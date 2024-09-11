@@ -2,9 +2,11 @@
 version: 2
 
 sources:
-  - name: gz_raw_data
+  - name: raw
+    schema: gz_raw_data
     tables:
-        - name: raw_gz_sales
+        - name: sales
+          identifier: raw_gz_sales
           description: sales of Greenweez / we have on row per product_id found in each orders_id
           tests:
             - unique:
@@ -20,7 +22,8 @@ sources:
               description: revenue for each product in orders
             - name: quantity
               description: number of each product purchased per order
-        - name: raw_gz_product
+        - name: products
+          identifier: raw_gz_product
           description: products of Greenweez / one row per product
           columns:
             - name: products_id
@@ -30,7 +33,8 @@ sources:
                 - not_null
             - name: purchase_price
               description: cost of each product
-        - name: raw_gz_ship
+        - name: ship
+          identifier: raw_gz_ship
           description: Greenweez shipping and logistic costs for each order
           columns:
             - name: orders_id
